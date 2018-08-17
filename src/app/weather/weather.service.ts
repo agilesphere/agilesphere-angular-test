@@ -17,7 +17,10 @@ export class WeatherService {
   constructor(private http: HttpClient) { }
 
   searchWeatherForCity(city) {
-    // implement the service
+    this.params.q = city;
+    return this.http
+      .get(this.url, { params: this.params })
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
 }
