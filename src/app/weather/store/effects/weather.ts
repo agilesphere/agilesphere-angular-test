@@ -21,7 +21,7 @@ export default class WeatherEffects {
       switchMap((action: any) => {
         return this.weatherService.searchWeatherForCity(action.payload)
           .pipe(
-            map(city => new weatherActions.LoadCityWeather(city)),
+            map(city => new weatherActions.LoadCityWeatherSuccess(city)),
             catchError(error => of(new weatherActions.LoadCityWeatherFail(error)))
           );
       })

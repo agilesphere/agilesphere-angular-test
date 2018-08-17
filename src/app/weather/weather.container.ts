@@ -1,16 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/observable';
+
+import * as fromStore from './store';
 
 @Component({
   selector: 'app-weather',
   template: `
-  <app-search></app-search>
-  <app-results></app-results>  `
+  <app-search (search)="citySearch($event)"></app-search>
+  <app-results [cities]="(cities$ | async)"></app-results>  `
 })
 export class WeatherContainer {
+  cities$: Observable<any[]>;
 
-  constructor() {}
+  constructor(private store: Store<any>) {}
 
-  citySearch() {
-    // TO BE IMPLMENTED
+  ngOnInit() {
+    this.cities$ = this.store.select(fromStore.getWeather);
+  }
+
+  citySearch(city: string) {
+    this.store.dispatch(new fromStore.LoadCityWeather(city.toLowerCase()));
   }
 }

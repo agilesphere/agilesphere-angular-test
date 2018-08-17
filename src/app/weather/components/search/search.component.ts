@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html'
 })
 export class SearchComponent {
-  // IMPLEMENT ANY INPUT OR OUTPUT YOU MIGHT NEED
+  @ViewChild('searchCityInput') searchCityInput: ElementRef;
+
+  @Output() search = new EventEmitter<string>();
 
   constructor() { }
 
-  search() {
-    // TO BE IMPLEMENTED
+  onSearch() {
+    this.search.emit(this.searchCityInput.nativeElement.value);
+    this.searchCityInput.nativeElement.value = '';
   }
 }
