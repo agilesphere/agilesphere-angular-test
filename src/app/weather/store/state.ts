@@ -1,6 +1,8 @@
+import { Summary } from '../../model/weather';
+
 export interface AppState {
     isLoading: boolean,
     cityFound: boolean,
-    weather: any,
+    weather: Summary[],
     hasError: boolean
 }

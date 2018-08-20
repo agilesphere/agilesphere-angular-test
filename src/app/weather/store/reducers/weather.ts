@@ -51,8 +51,3 @@ export function reducer (state = initialState, action): AppState {
             return state;
     }
 };
-
-export const getIsLoading = (state: any) => state.isLoading;
-export const getIsCityFound = (state: any) => state.cityFound;
-export const getWeather = (state: any) => state.weather;
-export const getHasError = (state: any) => state.hasError;

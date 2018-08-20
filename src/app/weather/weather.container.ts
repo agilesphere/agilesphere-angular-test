@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
 
-import * as fromStore from './store';
+import { Summary } from '../model/weather';
+import { AppState } from './store/state';
+import * as weatherActions from './store/actions/weather';
+import * as selectors from './store/selectors/';
 
 @Component({
   selector: 'app-weather',
@@ -11,15 +14,15 @@ import * as fromStore from './store';
   <app-results [cities]="(cities$ | async)"></app-results>  `
 })
 export class WeatherContainer {
-  cities$: Observable<any[]>;
+  cities$: Observable<Summary[]>;
 
-  constructor(private store: Store<any>) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.cities$ = this.store.select(fromStore.getWeather);
+    this.cities$ = this.store.select(selectors.getWeather);
   }
 
   citySearch(city: string) {
-    this.store.dispatch(new fromStore.LoadCityWeather(city.toLowerCase()));
+    this.store.dispatch(new weatherActions.LoadCityWeather(city.toLowerCase()));
   }
 }

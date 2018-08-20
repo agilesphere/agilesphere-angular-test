@@ -1,11 +1,12 @@
 import { Component, OnChanges, Input } from '@angular/core';
+import { Summary } from '../../../model/weather';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html'
 })
 export class ResultsComponent implements OnChanges {
-  @Input() cities: any[] = [];
+  @Input() cities: Summary[] = [];
   constructor() { }
 
   ngOnChanges() {

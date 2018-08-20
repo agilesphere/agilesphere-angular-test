@@ -1,34 +1,33 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { AppState } from '../../store/state';
 
-import * as fromWeather from '../reducers/weather';
+export interface CityState {
+  city: AppState;
+}
 
-export const getWeatherState = createFeatureSelector<any>(
-  'weather'
-);
-
-// city state
+export const getWeatherState = createFeatureSelector<CityState>('weather');
 
 export const getCityState = createSelector(
   getWeatherState,
-  (state: any) => state.city
+  (state: CityState) => state.city
 );
 
 export const getIsLoading = createSelector(
   getCityState,
-  fromWeather.getIsLoading
+  (state: AppState) => state.isLoading
 );
 
 export const getIsCityFound = createSelector(
   getCityState,
-  fromWeather.getIsCityFound
+  (state: AppState) => state.cityFound
 );
 
 export const getHasError = createSelector(
   getCityState,
-  fromWeather.getHasError
+  (state: AppState) => state.hasError
 );
 
 export const getWeather = createSelector(
     getCityState,
-    fromWeather.getWeather
+    (state: AppState) => state.weather
   );

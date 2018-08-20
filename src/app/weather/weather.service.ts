@@ -16,7 +16,7 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  searchWeatherForCity(city) {
+  searchWeatherForCity(city: string) {
     this.params.q = city;
     return this.http
       .get(this.url, { params: this.params })
