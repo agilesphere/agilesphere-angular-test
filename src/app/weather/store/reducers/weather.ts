@@ -34,7 +34,7 @@ const loadCityWeatherSuccess = (state, action) => {
 const loadCityWeatherFail = (state, action) => {
   return updateObject(state, {
     isLoading: false,
-    hasError: false,
+    hasError: true,
     cityFound: false
   });
 };

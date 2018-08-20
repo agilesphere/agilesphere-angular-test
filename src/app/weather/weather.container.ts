@@ -9,17 +9,21 @@ import * as selectors from './store/selectors/';
 
 @Component({
   selector: 'app-weather',
-  template: `
-  <app-search (search)="citySearch($event)"></app-search>
-  <app-results [cities]="(cities$ | async)"></app-results>  `
+  templateUrl: './weather.container.html'
 })
 export class WeatherContainerComponent implements OnInit {
   cities$: Observable<Summary[]>;
+  isLoading$: Observable<boolean>;
+  hasError$: Observable<boolean>;
+  isCityFound$: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.cities$ = this.store.select(selectors.getWeather);
+    this.isLoading$ = this.store.select(selectors.getIsLoading);
+    this.hasError$ = this.store.select(selectors.getHasError);
+    this.isCityFound$ = this.store.select(selectors.getIsCityFound);
   }
 
   citySearch(city: string) {

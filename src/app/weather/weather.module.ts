@@ -4,6 +4,7 @@ import { WeatherContainerComponent } from './weather.container';
 import { WeatherService } from './weather.service';
 import { SearchComponent } from './components/search/search.component';
 import { ResultsComponent } from './components/results/results.component';
+import { StatusComponent } from './components/status/status.component';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -18,6 +19,7 @@ import { reducers, effects } from '../weather/store';
   declarations: [
     SearchComponent,
     ResultsComponent,
+    StatusComponent,
     WeatherContainerComponent
   ],
   providers: [

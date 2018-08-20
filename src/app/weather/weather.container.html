@@ -1,0 +1,7 @@
+<div>
+    <app-search (search)="citySearch($event)"></app-search>
+    <status *ngIf="isLoading$ | async">Loading...</status>
+    <status *ngIf="hasError$ | async">City not found! Try again!!!</status>
+
+    <app-results [cities]="(cities$ | async)"></app-results>
+</div>
