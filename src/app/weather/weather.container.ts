@@ -13,7 +13,7 @@ import * as selectors from './store/selectors/';
   <app-search (search)="citySearch($event)"></app-search>
   <app-results [cities]="(cities$ | async)"></app-results>  `
 })
-export class WeatherContainer {
+export class WeatherContainerComponent implements OnInit {
   cities$: Observable<Summary[]>;
 
   constructor(private store: Store<AppState>) {}

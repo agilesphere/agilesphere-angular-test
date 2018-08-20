@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WeatherContainer } from './weather.container';
+import { WeatherContainerComponent } from './weather.container';
 import { WeatherService } from './weather.service';
 import { SearchComponent } from './components/search/search.component';
 import { ResultsComponent } from './components/results/results.component';
@@ -18,7 +18,7 @@ import { reducers, effects } from '../weather/store';
   declarations: [
     SearchComponent,
     ResultsComponent,
-    WeatherContainer
+    WeatherContainerComponent
   ],
   providers: [
     WeatherService

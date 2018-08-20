@@ -28,6 +28,6 @@ export const getHasError = createSelector(
 );
 
 export const getWeather = createSelector(
-    getCityState,
-    (state: AppState) => state.weather
-  );
+  getCityState,
+  (state: AppState) => state.weather
+);
