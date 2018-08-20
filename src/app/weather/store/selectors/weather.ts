@@ -17,11 +17,6 @@ export const getIsLoading = createSelector(
   (state: AppState) => state.isLoading
 );
 
-export const getIsCityFound = createSelector(
-  getCityState,
-  (state: AppState) => state.cityFound
-);
-
 export const getHasError = createSelector(
   getCityState,
   (state: AppState) => state.hasError

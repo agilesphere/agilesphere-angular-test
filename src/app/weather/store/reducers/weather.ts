@@ -5,7 +5,6 @@ import { updateObject, formatCityObject } from '../../../utility/utility';
 
 export const initialState: AppState = {
     isLoading: false,
-    cityFound: true,
     weather: [],
     hasError: false
 };
@@ -22,7 +21,6 @@ const loadCityWeatherSuccess = (state, action) => {
     return updateObject(state, {
       isLoading: false,
       hasError: false,
-      cityFound: true,
       weather: _.uniqBy([...state.weather, cityData], (weather) => weather.city)
     });
 
@@ -34,8 +32,7 @@ const loadCityWeatherSuccess = (state, action) => {
 const loadCityWeatherFail = (state, action) => {
   return updateObject(state, {
     isLoading: false,
-    hasError: true,
-    cityFound: false
+    hasError: true
   });
 };
 

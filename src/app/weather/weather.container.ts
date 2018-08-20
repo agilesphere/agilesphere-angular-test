@@ -15,7 +15,6 @@ export class WeatherContainerComponent implements OnInit {
   cities$: Observable<Summary[]>;
   isLoading$: Observable<boolean>;
   hasError$: Observable<boolean>;
-  isCityFound$: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {}
 
@@ -23,7 +22,6 @@ export class WeatherContainerComponent implements OnInit {
     this.cities$ = this.store.select(selectors.getWeather);
     this.isLoading$ = this.store.select(selectors.getIsLoading);
     this.hasError$ = this.store.select(selectors.getHasError);
-    this.isCityFound$ = this.store.select(selectors.getIsCityFound);
   }
 
   citySearch(city: string) {
