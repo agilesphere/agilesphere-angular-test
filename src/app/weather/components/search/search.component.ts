@@ -1,18 +1,26 @@
-import { Component, EventEmitter, Output, ElementRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html'
 })
-export class SearchComponent {
-  @ViewChild('searchCityInput') searchCityInput: ElementRef;
+export class SearchComponent implements OnInit {
 
   @Output() search = new EventEmitter<string>();
 
-  constructor() { }
+  searchForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.searchForm = this.fb.group({
+      city: [ '', Validators.required ]
+    });
+  }
 
   onSearch() {
-    this.search.emit(this.searchCityInput.nativeElement.value);
-    this.searchCityInput.nativeElement.value = '';
+    this.search.emit(this.searchForm.value.city);
+    this.searchForm.reset();
   }
 }
