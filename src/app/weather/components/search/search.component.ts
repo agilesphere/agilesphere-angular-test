@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

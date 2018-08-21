@@ -5,7 +5,6 @@ import { WeatherService } from './weather.service';
 import { SearchComponent } from './components/search/search.component';
 import { ResultsComponent } from './components/results/results.component';
 import { StatusComponent } from './components/status/status.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -23,7 +22,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearchComponent,
     ResultsComponent,
     StatusComponent,
-    SpinnerComponent,
     WeatherContainerComponent
   ],
   providers: [

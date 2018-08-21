@@ -1,5 +1,4 @@
 <div>
-    <spinner *ngIf="isLoading$ | async"></spinner>
     <app-search (search)="citySearch($event)"></app-search>
     <status *ngIf="hasError$ | async"></status>
     <app-results [cities]="(cities$ | async)"></app-results>
