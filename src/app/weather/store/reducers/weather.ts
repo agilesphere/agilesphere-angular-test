@@ -16,6 +16,7 @@ const loadCityWeather = (state, action) => {
 const loadCityWeatherSuccess = (state, action) => {
   const raw = action.payload;
   if (raw.list) {
+
     const cityData = formatCityObject({ city: `${raw.city.name} - ${raw.city.country}` }, raw.list);
 
     return updateObject(state, {
