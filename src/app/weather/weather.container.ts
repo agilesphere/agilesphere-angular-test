@@ -1,16 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/observable';
+
+import { Summary } from '../model/weather';
+import { AppState } from './store/state';
+import * as weatherActions from './store/actions/weather';
+import * as selectors from './store/selectors/';
 
 @Component({
   selector: 'app-weather',
-  template: `
-  <app-search></app-search>
-  <app-results></app-results>  `
+  templateUrl: './weather.container.html'
 })
-export class WeatherContainer {
+export class WeatherContainerComponent implements OnInit {
+  cities$: Observable<Summary[]>;
+  isLoading$: Observable<boolean>;
+  hasError$: Observable<boolean>;
 
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
-  citySearch() {
-    // TO BE IMPLMENTED
+  ngOnInit() {
+    this.cities$ = this.store.select(selectors.getWeather);
+    this.isLoading$ = this.store.select(selectors.getIsLoading);
+    this.hasError$ = this.store.select(selectors.getHasError);
+  }
+
+  citySearch(city: string) {
+    this.store.dispatch(new weatherActions.LoadCityWeather(city.toLowerCase()));
   }
 }

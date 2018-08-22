@@ -1,15 +1,16 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Summary } from '../../../model/weather';
 
 @Component({
   selector: 'app-results',
-  templateUrl: './results.component.html'
-})
-export class ResultsComponent implements OnChanges {
-  constructor() { }
+  templateUrl: './results.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 
-  ngOnChanges() {
-    // IMPLEMENT ANYTHING YOU BEKIEVE YOU MIGHT NEED HERE
-  }
+})
+export class ResultsComponent {
+  @Input() cities: Summary[] = [];
+
+  constructor() {}
 }
 
 

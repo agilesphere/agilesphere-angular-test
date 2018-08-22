@@ -62,4 +62,8 @@ export interface Weather {
 
 export interface Summary {
   city: string;
+  '12pm'?: number;
+  '6pm'?: number;
+  '12am'?: number;
+  '6am'?: number;
 }

@@ -1,0 +1,5 @@
+<div>
+    <app-search (search)="citySearch($event)"></app-search>
+    <status *ngIf="hasError$ | async"></status>
+    <app-results [cities]="(cities$ | async)"></app-results>
+</div>
