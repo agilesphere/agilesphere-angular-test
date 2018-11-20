@@ -1,3 +1,5 @@
+
+
 <table class="table">
   <thead class="thead-dark">
   <tr>
@@ -10,11 +12,11 @@
   </thead>
   <tbody>
   <tr>
-    <td scope="row">London</td>
-    <td scope="row">3 &deg;</td>
-    <td scope="row">12.5 &deg;</td>
-    <td scope="row">9 &deg;</td>
-    <td scope="row">2 &deg;</td>
+    <td scope="row">{{summary?.city}}</td>
+    <td scope="row">{{results?.list[2].main.temp}}&deg;</td>
+    <td scope="row">{{results?.list[4].main.temp}}&deg;</td>
+    <td scope="row">{{results?.list[6].main.temp}}&deg;</td>
+    <td scope="row">{{results?.list[7].main.temp}}&deg;</td>
   </tr>
   </tbody>
 </table>
