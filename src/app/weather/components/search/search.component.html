@@ -5,6 +5,7 @@
            name="city"
            placeholder="City"
            type="text"
+           [formControl]="searchControl"
            required>
   </div>
   <button class="btn-search btn btn-primary mt-3 col-4" type="submit" (click)="search()">Search</button>

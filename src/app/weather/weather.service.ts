@@ -16,8 +16,8 @@ export class WeatherService {
     params = params.append('q', city);
     params = params.append('cnt', '8');
     params = params.append('units', 'metric');
-    params = params.append('APPID', environment.apiKey);
-
+    params = params.append('APPID', environment.apiKey);    
+    
     return this.http.get<any>(environment.apiUrl, { params });
   }
 
