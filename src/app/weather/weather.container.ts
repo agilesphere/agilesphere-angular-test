@@ -20,7 +20,9 @@ export class WeatherContainer implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.weathers$ = this.store.pipe(select(selectWeatherList)) 
+    
+    // not using store.pipe() to make mocking of ngrx store quick and simple
+    this.weathers$ = this.store.select(selectWeatherList) 
   }
 
   citySearch(city) {

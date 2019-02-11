@@ -12,7 +12,7 @@ export class SearchComponent {
 
   constructor() { }
 
-  search() {    
+  search() {           
     this.citySearch.emit(this.searchControl.value);
     this.searchControl.setValue('');
   }

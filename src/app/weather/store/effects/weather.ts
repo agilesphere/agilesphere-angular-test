@@ -11,8 +11,8 @@ export class effects {
   @Effect()
   loadWeather$ = this.actions$.pipe(
     ofType<SearchWeather>(WeatherActionTypes.SearchWeather),
-    mergeMap(({payload}) =>            
-        this.weatherService.searchWeatherForCity(payload.city) 
+    mergeMap(({payload}) =>                 
+        this.weatherService.searchWeatherForCity(payload.city)         
     ),
     map((weather: Weather) => new LoadWeather(weather))
   );
