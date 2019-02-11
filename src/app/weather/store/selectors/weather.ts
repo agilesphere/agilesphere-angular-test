@@ -8,3 +8,7 @@ export const selectWeatherList = createSelector(selectWeatherState, state => {
       return state.weathers;     
     }    
 });
+
+export const selectFailureMessage = createSelector(selectWeatherState, state => {  
+  return state.failureMessage;   
+});

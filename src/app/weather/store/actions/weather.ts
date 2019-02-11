@@ -4,6 +4,7 @@ import { Weather } from '../../../model/weather';
 export enum WeatherActionTypes {
   SearchWeather = '[Weather Result] Search Weather',
   LoadWeather = '[Weather Result] Load Weather',
+  LoadWeatherFail = '[Weather Result] Load Weather Fail',
 }
 
 export class SearchWeather implements Action {
@@ -16,6 +17,12 @@ export class LoadWeather implements Action {
   constructor(public payload: Weather) {}
 }
 
+export class LoadWeatherFail implements Action {
+  readonly type = WeatherActionTypes.LoadWeatherFail;
+  constructor(public payload: string) {}
+}
+
 export type WeatherActions =
   | SearchWeather
   | LoadWeather
+  | LoadWeatherFail
