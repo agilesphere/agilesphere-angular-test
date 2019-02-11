@@ -4,7 +4,7 @@ import { Actions } from '@ngrx/effects';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { cold, hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
-import { SearchWeather, LoadWeather } from '../actions/weather';
+import { SearchWeather, LoadWeather, LoadWeatherFail } from '../actions/weather';
 import { WeatherService } from '../../weather.service';
 import { effects } from './weather';
 
@@ -27,9 +27,10 @@ describe('effects', () => {
     actions$ = TestBed.get(Actions);
   });
 
-  //The effect test has been removed because of following error
+  //The effect tests has been removed because of following error
   //Encountered undefined provider! Usually this means you have a circular dependencies (might be caused by using 'barrel' index.ts files.
-  //I have not come across this error before. I need more time to investigate and resolve this issue.
+  //I have not come across this error before. I need more time to investigate and resolve it.
+  //But this is how I would write test for ngrx effect using jamine marble
 
   xdescribe('loadWeather$', () => {
     it('should call service to get city weather when SearchWeather action is triggred', () => {
@@ -46,11 +47,31 @@ describe('effects', () => {
       weatherService.searchWeatherForCity.and.returnValue(response$);
 
       effects.loadWeather$.subscribe(() => {
-        expect(weatherService.searchWeatherForCity).toHaveBeenCalled();
+        expect(weatherService.searchWeatherForCity).toHaveBeenCalledWith('london');
       });
 
       expect(effects.loadWeather$).toBeObservable(expected$);
     });
+
+    it('should dispatch LoadWeatherFail action when service call failed', () => {
+      const error = { message: 'city name not found or invalid' } as any;
+      const action = new SearchWeather({ city: 'london' });
+      const completion = new LoadWeatherFail(error.message);
+
+      actions$ = hot('-a', { a: action });
+      const error$ = cold('-#', {}, error);
+      const expected$ = cold('--b', { b: completion });
+
+      weatherService = TestBed.get(WeatherService);
+      weatherService.searchWeatherForCity.and.returnValue(error$);
+
+      effects.loadWeather$.subscribe(() => {
+        expect(weatherService.searchWeatherForCity).toHaveBeenCalledWith('london');
+      });
+
+      expect(effects.loadWeather$).toBeObservable(expected$);
+    });    
+
   });
 
 });
